@@ -5,6 +5,7 @@ namespace ToDoListAPI
     public class ToDoList
     {
         public Guid id { get; set; }
+        // public string title { get; set; }
         public string title { get; set; } = string.Empty;
 
         public bool done { get; set; }

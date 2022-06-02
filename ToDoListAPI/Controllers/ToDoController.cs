@@ -67,6 +67,8 @@ namespace ToDoListAPI.Controllers
 
             dbtodo.title = request.title;
             dbtodo.updatedDate = request.updatedDate;
+            dbtodo.dueDate = request.dueDate;          
+            dbtodo.done = request.done;      
 
             await _context.SaveChangesAsync();
 

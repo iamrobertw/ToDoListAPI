@@ -7,9 +7,22 @@ namespace ToDoListAPI
     {
         public static void Main(string[] args)
         {
+            // var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+
+            //builder.Services.AddCors(options =>
+            //{
+            //   options.AddPolicy(name: MyAllowSpecificOrigins,
+            //                      builder =>
+            //                      {
+            //                          builder.WithOrigins("http://localhost:8080/",
+            //                                              "http://localhost:3000/");
+            //                      });
+            //});
+
+            // builder.Services.AddCors();
 
             builder.Services.AddControllers();
             builder.Services.AddDbContext<DataContext>(options => 
@@ -29,6 +42,12 @@ namespace ToDoListAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            // Last I added down WORK!
+            app.UseCors(
+            options => options.WithOrigins("*").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowAnyHeader());
+            //options => options.WithOrigins("*").AllowAnyMethod().AllowAnyHeader());
+            // Last I added up
 
             app.UseHttpsRedirection();
 
